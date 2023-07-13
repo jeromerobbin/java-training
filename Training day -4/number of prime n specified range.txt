@@ -1,0 +1,34 @@
+public class PrimeCounter {
+    public static void main(String[] args) {
+        int start = 1; // Start of the range
+        int end = 100; // End of the range
+        int count = countPrimes(start, end);
+        System.out.println("Number of prime numbers between " + start + " and " + end + ": " + count);
+    }
+
+    public static int countPrimes(int start, int end) {
+        int count = 0;
+
+        for (int number = start; number <= end; number++) {
+            if (isPrime(number)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

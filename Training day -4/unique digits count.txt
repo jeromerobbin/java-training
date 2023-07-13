@@ -1,0 +1,25 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class UniqueDigitCounter {
+    public static void main(String[] args) {
+        int number = 123456789; // Change this value to the desired number
+        int count = countUniqueDigits(number);
+        System.out.println("Number of unique digits in " + number + ": " + count);
+    }
+
+    public static int countUniqueDigits(int number) {
+        Map<Integer, Integer> digitCount = new HashMap<>();
+
+        // Convert number to string for easier digit extraction
+        String numberString = String.valueOf(number);
+
+        // Iterate through each character in the string
+        for (char c : numberString.toCharArray()) {
+            int digit = Character.getNumericValue(c);
+            digitCount.put(digit, digitCount.getOrDefault(digit, 0) + 1);
+        }
+
+        return digitCount.size();
+    }
+}

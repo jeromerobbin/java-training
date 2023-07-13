@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class NonRepeatedDigitCounter {
+    public static void main(String[] args) {
+        int number = 123451234; // Change this value to the desired number
+        int count = countNonRepeatedDigits(number);
+        System.out.println("Number of non-repeated digits in " + number + ": " + count);
+    }
+
+    public static int countNonRepeatedDigits(int number) {
+        Map<Integer, Integer> digitCount = new HashMap<>();
+
+        // Convert number to string for easier digit extraction
+        String numberString = String.valueOf(number);
+
+        // Iterate through each character in the string
+        for (char c : numberString.toCharArray()) {
+            int digit = Character.getNumericValue(c);
+            digitCount.put(digit, digitCount.getOrDefault(digit, 0) + 1);
+        }
+
+        int nonRepeatedCount = 0;
+
+        // Iterate through the digitCount map
+        for (int count : digitCount.values()) {
+            if (count == 1) {
+                nonRepeatedCount++;
+            }
+        }
+
+        return nonRepeatedCount;
+    }
+}

@@ -1,0 +1,28 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class DigitCounter {
+    public static void main(String[] args) {
+        int number = 123456789; // Change this value to the desired number
+        Map<Integer, Integer> digitCount = countDigits(number);
+        System.out.println("Digit count for number " + number + ":");
+        for (Map.Entry<Integer, Integer> entry : digitCount.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+
+    public static Map<Integer, Integer> countDigits(int number) {
+        Map<Integer, Integer> digitCount = new HashMap<>();
+
+        // Convert number to string for easier digit extraction
+        String numberString = String.valueOf(number);
+
+        // Iterate through each character in the string
+        for (char c : numberString.toCharArray()) {
+            int digit = Character.getNumericValue(c);
+            digitCount.put(digit, digitCount.getOrDefault(digit, 0) + 1);
+        }
+
+        return digitCount;
+    }
+}
