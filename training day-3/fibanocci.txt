@@ -1,0 +1,29 @@
+public class FibonacciCalculator {
+    public static void main(String[] args) {
+        int n = 10; // Change this value to calculate the nth Fibonacci number
+        long fibonacci = calculateFibonacci(n);
+        System.out.println("The " + n + "th Fibonacci number is: " + fibonacci);
+    }
+
+    public static long calculateFibonacci(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be a positive integer.");
+        }
+
+        if (n <= 2) {
+            return 1;
+        }
+
+        long prev1 = 1;
+        long prev2 = 1;
+        long fibonacci = 0;
+
+        for (int i = 3; i <= n; i++) {
+            fibonacci = prev1 + prev2;
+            prev1 = prev2;
+            prev2 = fibonacci;
+        }
+
+        return fibonacci;
+    }
+}

@@ -1,0 +1,28 @@
+public class PrimeChecker {
+    public static void main(String[] args) {
+        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
+        System.out.print("Enter a number: ");
+        int input1 = 0;
+        try {
+            input1 = Integer.parseInt(reader.readLine());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        int result = isPrime(input1);
+        System.out.println("Result: " + result);
+    }
+
+    public static int isPrime(int input1) {
+        if (input1 <= 1) {
+            return 1; // Not a prime number
+        }
+
+        for (int i = 2; i <= Math.sqrt(input1); i++) {
+            if (input1 % i == 0) {
+                return 1; // Not a prime number
+            }
+        }
+
+        return 2; // Prime number
+    }
+}
